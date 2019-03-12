@@ -33,9 +33,3 @@ class Solution(object):
             nums[high] = nums[low]
         nums[low] = pivot
         return low
-
-
-if __name__ == "__main__":
-    a = [6, 1, 3, 5, 7, 2, 4, 9, 11, 8]
-    solution = Solution()
-    assert solution.findKthLargest(a, 3) == 8

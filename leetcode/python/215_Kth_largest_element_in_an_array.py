@@ -22,7 +22,7 @@ class Solution(object):
             position = self.partition(nums, start, end)
         return nums[k]
 
-    def partition(self, nums: List[int], low: int, high) -> int:
+    def partition(self, nums: List[int], low: int, high: int) -> int:
         pivot = nums[low]
         while low < high:
             while low < high and nums[high] >= pivot:

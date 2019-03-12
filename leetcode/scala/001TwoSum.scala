@@ -14,7 +14,8 @@ object Solution {
     def main(args: Array[String]) {
       val nums: Array[Int] = Array(2, 7, 11, 15)
       assert(twoSum(nums, 9)(0) == 0)
-      assert(twoSum(nums, 18)(0) == 0)
+      assert(twoSum(nums, 18)(0) == 1)
+      assert(twoSum(nums, 20) == null)
     }
 
     def twoSum(nums: Array[Int], target: Int): Array[Int] = {
@@ -24,6 +25,6 @@ object Solution {
         else
           return Array(m.getOrElse(target-x._1, -1), x._2)
       })
-      null
+      return null
     }
 }

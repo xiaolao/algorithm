@@ -30,18 +30,24 @@
 case class Node(
   key: Int, 
   value: Int, 
-  var prev: Node,
-  var next: Node
+  var prev: Node = null,
+  var next: Node = null
 )
 
 /**
-  *
-  * @param _capacity
+  * 最近最少使用缓存类
+  * @param _capacity 
   */
 class LRUCache(_capacity: Int) {
+  private var size: Int = 0
+  private val head: Node = new Node(-1, -1)
+  private val tail: Node = new Node(-1, -1)
+  head.next = tail
+  tail.prev = head
+  private val items = collection.mutable.Map[Int, Node]()
 
   /**
-    * 最近最少使用缓存类
+    *
     * @param key 通过key获取value
     * @return value
     */

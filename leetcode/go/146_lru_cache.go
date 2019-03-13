@@ -95,21 +95,16 @@ func (this *LRUCache) Put(key int, value int) {
 
 // 删除特定节点
 func (this *LRUCache) remove(node *Node) {
-	n := node.next
-	p := node.prev
-	n.prev = p
-	p.next = n
-	node.prev = nil
-	node.next = nil
+	node.prev.next = node.next
+	node.next.prev = node.prev
 }
 
 // 只从双链表头部插入节点
 func (this *LRUCache) insert(node *Node) {
-	n := this.head.next
+	this.head.next.prev = node
+	node.next = this.head.next
 	node.prev = this.head
 	this.head.next = node
-	node.next = n
-	n.prev = node
 }
 
 /**

@@ -52,7 +52,15 @@ class LRUCache(_capacity: Int) {
     * @return value
     */
   def get(key: Int): Int = {
-
+    items
+      .get(key)
+      .map{node => {
+        remove(node)
+        insert(node)
+        node.value
+      }
+    }
+    .getOrElse(-1)
   }
 
   /**
@@ -61,26 +69,56 @@ class LRUCache(_capacity: Int) {
     * @param value
     */
   def put(key: Int, value: Int) {
-
+    val node = items.get(key) match {
+      case Some(node) => 
+        remove(node)
+        node.copy(value=value)
+      case None => 
+        if (_capacity == size) {
+          items -= tail.prev.key
+          remove(tail.prev)
+        } else {
+          size += 1
+        }
+        Node(key, value)
+    }
+    insert(node)
+    items += (key -> node)
   }
 
   /**
-    *
+    * 删除双链表节点
     * @param node
     */
   def remove(node: Node) {
+    node.prev.next = node.next
+    node.next.prev = node.prev
   }
 
   /**
-    *
+    * 只在双链表头部插入数据
     * @param node
     */
   def insert(node: Node) {
+    head.next.prev = node
+    node.next = head.next
+    node.prev = head
+    head.next = node
   }
 }
 
 object Solution {
   def main(args: Array[String]) {
+    var cache = new LRUCache(2)
+    cache.put(1, 1)
+    cache.put(2, 2)
+    assert(cache.get(1) == 1)
+    cache.put(3, 3)
+    assert(cache.get(2) == -1)
+    cache.put(4, 4)
+    assert(cache.get(1) == -1)
+    assert(cache.get(3) == 3)
+    assert(cache.get(4) == 4)
   }
 }
 

@@ -18,6 +18,10 @@ object Solution {
       assert(twoSum(nums, 20) == null)
     }
 
+    /**
+     * @param nums 传入数组
+     * @param target 目标和
+     */
     def twoSum(nums: Array[Int], target: Int): Array[Int] = {
       nums.zipWithIndex.foldLeft(Map.empty[Int, Int])((m, x) => {
         if (m.get(target - x._1) == None)

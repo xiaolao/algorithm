@@ -10,10 +10,50 @@
 
 # Definition for singly-linked list.
 
+
 class ListNode:
+    """单链表节点"""
+
     def __init__(self, x):
         self.val = x
         self.next = None
+
+
+class ListIterator:
+    """链表迭代器"""
+
+    def __init__(self, node: ListNode):
+        self.current = node
+
+    def __iter__(self):
+        return self
+
+    def __next__(self) -> int:
+        if self.current is None:
+            raise StopIteration
+        result = self.current.val
+        self.current = self.current.next
+        return result
+
+
+class LinkList:
+    """单链表"""
+
+    def __init__(self, val: int):
+        self.head = self.tail = ListNode(val)
+
+    def append(self, val: int):
+        """添加节点到尾部"""
+        node = ListNode(val)
+        self.tail.next = node
+        self.tail = node
+
+    def __iter__(self) -> ListIterator:
+        """返回列表迭代器对象"""
+        return ListIterator(self.head)
+
+    def __str__(self):
+        return "".join(str(i) for i in self)
 
 
 class Solution:
@@ -25,19 +65,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-    def l2s(cur: ListNode) -> str:
-        vs = ""
-        while cur is not None:
-            vs += str(cur.val)
-            cur = cur.next
-        return vs
-    head = node1 = ListNode(1)
-    node1.next = node2 = ListNode(2)
-    node2.next = node3 = ListNode(3)
-    node3.next = node4 = ListNode(4)
-    node4.next = node5 = ListNode(5)
-    old = l2s(head)
-    solution = Solution()
-    head = solution.reverseList(head)
-    new = l2s(head)
-    assert old == new[::-1]
+    link_list = LinkList(1)
+    link_list.append(2)
+    link_list.append(3)
+    link_list.append(4)
+    link_list.append(5)
+    print(str(link_list))

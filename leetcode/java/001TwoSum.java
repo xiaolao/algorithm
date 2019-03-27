@@ -32,6 +32,5 @@ class Solution {
         assert twoSum(nums, 9)[0] == 0;
         assert twoSum(nums, 18)[0] == 1;
         assert twoSum(nums, 20) == null;
-        System.out.println("finished!");
     }
 }

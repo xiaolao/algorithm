@@ -51,7 +51,6 @@ class LRUCache {
         assert(cache.get(1) == -1);
         assert(cache.get(3) == 3);
         assert(cache.get(4) == 4);
-        System.out.println("paaaaaaaa");
     }
 
     // 初始化LRUCache对象, 对象构造器
@@ -88,6 +87,7 @@ class LRUCache {
             this.insert(node);
             ++this.count;
             if (this.count > this.capacity) {
+                this.items.remove(this.tail.prev.key);
                 this.remove(this.tail.prev);
                 --this.count;
             }

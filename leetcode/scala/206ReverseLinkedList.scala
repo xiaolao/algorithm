@@ -16,7 +16,13 @@ class ListNode(var _x: Int = 0) {
 }
 
 object Solution {
-    def reverseList(head: ListNode): ListNode = {
-        
+
+  def main(args Array[String]) {
+  }
+
+  def reverseList(head: ListNode): ListNode = {
+    var prev: ListNode = null
+    while (head != null) {
     }
+  }
 }

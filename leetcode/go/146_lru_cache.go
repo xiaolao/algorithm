@@ -52,6 +52,7 @@ func Constructor(capacity int) LRUCache {
 	if capacity <= 0 {
 		panic("capacity must be positive value")
 	}
+	// head,tail都为哨兵节点
 	head := newNode(0, 0)
 	tail := newNode(0, 0)
 	head.next = tail

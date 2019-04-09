@@ -18,24 +18,40 @@ class ListNode(var _x: Int = 0) {
 
 object Solution {
 
-  def main(args String[]) {
+  def main(args: Array[String]) {
+    val node1 = new ListNode(1)
+    val node2 = new ListNode(2)
+    val node3 = new ListNode(3)
+    val node4 = new ListNode(4)
+    val node5 = new ListNode(5)
+    node1.next = node2
+    node2.next = node3
+    node3.next = node4
+    node4.next = node5
+    assert(Print(node1) == "12345")
+    val head = reverseList(node1)
+    assert(Print(head) == "54321")
   }
 
   def reverseList(head: ListNode): ListNode = {
     var pre: ListNode = null
     var cur: ListNode = head
     while(cur != null) {
-      cur.next, pre, cur = pre, cur, cur.next
+      val tmp = cur.next
+      cur.next = pre
+      pre = cur
+      cur = tmp
     }
     return pre
   }
 
-  def Print(head: ListNode) String = {
+  def Print(head: ListNode): String = {
     var s: String = ""
     var cur: ListNode = head
     while(cur != null) {
-      s += cur.value
+      s += cur.x.toString
       cur = cur.next
     }
+    return s
   }
 }

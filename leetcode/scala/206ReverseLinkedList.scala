@@ -53,6 +53,5 @@ object Solution {
       node = node.next
     }
     return s
->>>>>>> 1bae8b8c15b5cce9940ed48e1469f85a46832186
   }
 }

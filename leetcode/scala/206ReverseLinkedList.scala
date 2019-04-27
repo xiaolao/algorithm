@@ -10,6 +10,7 @@
 // Definition for singly-linked list.
 
 // Definition for singly-linked list.
+
 class ListNode(var _x: Int = 0) {
   var next: ListNode = null
   var x: Int = _x
@@ -18,39 +19,38 @@ class ListNode(var _x: Int = 0) {
 object Solution {
 
   def main(args: Array[String]) {
-    val head: ListNode = new ListNode(1)
-    val node2: ListNode = new ListNode(2)
-    val node3: ListNode = new ListNode(3)
-    val node4: ListNode = new ListNode(4)
-    val node5: ListNode = new ListNode(5)
-    head.next = node2
+    val node1 = new ListNode(1)
+    val node2 = new ListNode(2)
+    val node3 = new ListNode(3)
+    val node4 = new ListNode(4)
+    val node5 = new ListNode(5)
+    node1.next = node2
     node2.next = node3
     node3.next = node4
     node4.next = node5
-    assert(toString(head) == "12345")
-    val tail: ListNode = reverseList(head)
-    assert(toString(tail) == "54321")
+    assert(Print(node1) == "12345")
+    val head = reverseList(node1)
+    assert(Print(head) == "54321")
   }
 
   def reverseList(head: ListNode): ListNode = {
-    if (head == null || head.next == null) return head
-
-    def reverse(node: ListNode, nodeNext: ListNode): ListNode = {
-      if (nodeNext == null) return node
-
-      val nodeNextNext = nodeNext.next
-      nodeNext.next = node
-      reverse(nodeNext, nodeNextNext)
+    var pre: ListNode = null
+    var cur: ListNode = head
+    while(cur != null) {
+      val tmp = cur.next
+      cur.next = pre
+      pre = cur
+      cur = tmp
     }
-    reverse(null, head)
+    return pre
   }
 
-  def toString(head: ListNode): String = {
-    var node: ListNode = head
+  def Print(head: ListNode): String = {
     var s: String = ""
-    while (node != null) {
-      s = s + node.x.toString()
-      node = node.next
+    var cur: ListNode = head
+    while(cur != null) {
+      s += cur.x.toString
+      cur = cur.next
     }
     return s
   }

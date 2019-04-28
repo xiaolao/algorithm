@@ -6,6 +6,8 @@
 
 // Given 1->2->3->4, you should return the list as 2->1->4->3.
 
+import java.lang.String;
+
 class ListNode {
     int val;
     ListNode next;
@@ -29,20 +31,21 @@ class Solution {
         assert toString(head).equals("21435");
     }
 
-    public static ListNode swapPairs(ListNode head) {
-        ListNode sentinel = new ListNode(0);
-        ListNode prev = sentinel;
-        prev.next = head;
-        while (prev.next != null && prev.next.next != null) {
-            ListNode a = prev.next;
-            ListNode b = a.next;
-            ListNode c = b.next;
-            prev.next = b;
-            b.next = a;
-            a.next = c;
-            prev = a;
+    /**
+     * 使用递归保存变量,递归是一个压栈的过程
+     *  before recursive: cur: 1, cur.next: 2
+     *  before recursive: cur: 3, cur.next: 4
+     *  after recursive: cur: 3, cur.next: 4
+     *  after recursive: cur: 1, cur.next: 2
+     */
+    public static ListNode swapPairs(ListNode cur) {
+        if (cur == null || cur.next == null) {
+            return cur;
         }
-        return sentinel.next;
+        ListNode nxt = cur.next;
+        cur.next = swapPairs(nxt.next);
+        nxt.next = cur;
+        return nxt;
     }
 
     public static String toString(ListNode head) {

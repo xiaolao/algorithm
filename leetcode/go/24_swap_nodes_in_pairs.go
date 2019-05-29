@@ -10,6 +10,7 @@
 package leetcode
 
 func swapPairs(head *ListNode) *ListNode {
+	var prev *ListNode
 	sentinel := &ListNode{0, nil}
 	prev, prev.Next = sentinel, head
 	for prev != nil && prev.Next != nil {

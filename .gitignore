@@ -117,3 +117,6 @@ db_settings.py
 *.rawdata
 *local.py
 *.lock
+
+# java
+*.class

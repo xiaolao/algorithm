@@ -29,4 +29,33 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        
+        cur, count = head, 0
+        while cur and count < k:
+            cur = cur.next
+            count += 1
+            if not cur:
+                break
+            cur = self.reverseKGroup(cur, k)
+            while count > 0:
+
+
+def println(head: ListNode) -> str:
+    s = ""
+    while head:
+        s += str(head.val)
+        head = head.next
+    return s
+
+
+if __name__ == "__main__":
+    node1 = ListNode(1)
+    node2 = ListNode(2)
+    node3 = ListNode(3)
+    node4 = ListNode(4)
+    node5 = ListNode(5)
+    node1.next = node2
+    node2.next = node3
+    node3.next = node4
+    node4.next = node5
+    solution = Solution()
+    assert println(solution.reverseKGroup(node1, 3)) == "21435"

@@ -16,11 +16,12 @@
 // You may not alter the values in the list's nodes, only nodes itself may be changed.
 package main
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
+func reverseKGroup(head *ListNode, k int) *ListNode {
+	if 
+
 }
 
-func reverseKGroup(head *ListNode, k int) *ListNode {
+func reverse(head *ListNode, count int) {
+
 
 }

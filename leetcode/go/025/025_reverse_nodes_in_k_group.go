@@ -17,11 +17,18 @@
 package main
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	if 
-
-}
-
-func reverse(head *ListNode, count int) {
-
-
+	cur, count := head, 0
+	for cur != nil && count < k {
+		cur = cur.Next
+		count++
+	}
+	if count < k {
+		return head
+	}
+	cur = reverseKGroup(cur, k)
+	for count > 0 {
+		head.Next, head, cur = cur, head.Next, head
+		count--
+	}
+	return cur
 }

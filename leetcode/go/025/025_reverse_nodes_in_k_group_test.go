@@ -12,6 +12,8 @@ func TestReverseKGroup(t *testing.T) {
 	node2.Next = node3
 	node3.Next = node4
 	node4.Next = node5
-	group1 := reverseKGroup(node1, 1)
-
+	head := reverseKGroup(node1, 3)
+	if PrintLinkedList(head) != "32145" {
+		t.Error("25 reverseKGroup doesn't work correctly!")
+	}
 }

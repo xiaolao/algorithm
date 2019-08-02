@@ -45,7 +45,6 @@ def println(head: ListNode) -> str:
     s = ""
     while head:
         s += str(head.val)
-        print(str(head.val))
         head = head.next
     return s
 

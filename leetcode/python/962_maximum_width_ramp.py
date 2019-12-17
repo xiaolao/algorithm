@@ -33,12 +33,19 @@ from typing import List
 
 
 class Solution:
+
     def maxWidthRamp(self, A: List[int]) -> int:
-        max_width = 0
+        width_ramp = 0
         m = float("inf")
         for i in sorted(range(len(A)), key=A.__getitem__):
-            max_width = max(max_width, i - m)
+            width_ramp = max(i - m, width_ramp)
             m = min(m, i)
-        return max_width
-            
+        return width_ramp
 
+
+if __name__ == "__main__":
+    solution = Solution()
+    A = [6, 0, 8, 2, 1, 5]
+    assert solution.maxWidthRamp(A) == 4
+    B = [9, 8, 1, 0, 1, 9, 4, 0, 4, 1]
+    assert solution.maxWidthRamp(B) == 7

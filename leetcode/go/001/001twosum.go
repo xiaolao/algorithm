@@ -11,10 +11,7 @@
 
 package leetcode
 
-import "reflect"
-
 func twoSum(nums []int, target int) []int {
-	reflect.ValueOf
 	tmpMap := make(map[int]int)
 	for i, num := range nums {
 		_, ok := tmpMap[num]

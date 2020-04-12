@@ -13,6 +13,7 @@
 object Solution {
     def main(args: Array[String]) {
       val nums: Array[Int] = Array(2, 7, 11, 15)
+      println("assert !!!")
       assert(twoSum(nums, 9)(0) == 0)
       assert(twoSum(nums, 18)(0) == 1)
       assert(twoSum(nums, 20) == null)

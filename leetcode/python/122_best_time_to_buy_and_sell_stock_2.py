@@ -58,4 +58,3 @@ if __name__ == "__main__":
     B = [1, 2, 3, 4, 5]
     assert solution.maxProfit(B) == 4
 
-

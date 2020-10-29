@@ -18,18 +18,19 @@
 #  1  3  -1  -3 [5  3  6] 7       6
 #  1  3  -1  -3  5 [3  6  7]      7
 
-
 from typing import List
 
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        """
+        """
         if not nums: return []
         window, result = [], []
         for index, value in enumerate(nums):
             if index >= k and window[0] <= index - k:
                 window.pop(0)
-            while window and nums[window[-1]] < value:
+            while window and nums[window[-1]] <= value:
                 window.pop()
             window.append(index)
             if index >= k-1:

@@ -8,17 +8,22 @@
 
 // Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
-#include<vector.h>
+#include<vector>
+#include<unordered_map>
+
+using std::vector;
+using std::unordered_map;
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> m;
-        for(int i = 0; i < nums.size(); i++)
-        {
-            if(m.find(target-nums[i]) != m.end())
-            return {m[target-nums[i]], i};
-            m[nums[i]] = i;
+        std::unordered_map<int, int> record;
+        for(int i = 0; i < nums.size(); ++i) {
+            auto find = record.find(nums[i]);
+            if(find != record.end())
+                return {find->second, i};
+            record.emplace(target-nums[i], i);
         }
+        return {-1, -1};
     }
 };

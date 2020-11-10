@@ -2,7 +2,7 @@
 #include "../catch2/catch.hh"
 #include "solution.h"
 
-TEST_CASE("Two Sum", "twoSum") {
+TEST_CASE("001", "twoSum") {
     Solution s;
     
     std::vector<int> v1{2, 7, 11, 15};

@@ -3,7 +3,8 @@
 #include "../catch2/catch.hh"
 #include "solution.h"
 
-TEST_CASE("239", "[maxSlidingWindow]") {
+TEST_CASE("239", "[maxSlidingWindow]")
+{
     Solution s;
 
     vector<int> nums1{1};

@@ -10,7 +10,4 @@ TEST_CASE("242", "Valid Anagram")
     REQUIRE( s.isAnagram("anagram", "nagaram") );
     REQUIRE( s.isAnagram2("anagram", "nagaram") );
     REQUIRE( s.isAnagram3("anagram", "nagaram") );
-    REQUIRE( s.isAnagram4("anagram", "nagaram") );
-    REQUIRE( s.isAnagram5("anagram", "nagaram") );
-
 }

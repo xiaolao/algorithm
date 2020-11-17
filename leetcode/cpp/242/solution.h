@@ -13,9 +13,12 @@
 
 // Follow up:
 // What if the inputs contain unicode characters? How would you adapt your solution to such case?
+#include <algorithm>
 #include <string>
+#include <functional>
 #include <unordered_map>
 
+using std::sort;
 using std::string;
 using std::unordered_map;
 
@@ -36,18 +39,22 @@ public:
     }
 
     bool isAnagram2(string s, string t)  {
-
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        return s == t;
     }
 
     bool isAnagram3(string s, string t) {
+        if (s.size() != t.size()) return false;
 
+        int hash[26] = {0}; // 初始化维度为26的数组
+        for (int i = 0; i < s.size(); i++)
+            hash[s[i]-'a']++, hash[t[i]-'a']--;
+
+        for (int i = 0; i < 26; i++)
+            if (hash[i] != 0) return false;
+
+        return true;
     }
 
-    bool isAnagram4(string s, string t) {
-
-    }
-
-    bool isAnagram5(string s, string t) {
-
-    }
 };

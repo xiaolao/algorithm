@@ -58,7 +58,7 @@ public:
         if (root == nullptr) return true;
 
         if(!inOrderValid(root->left))  return false;
-        if (prev != nullptr && prev->val > root->val) return false;
+        if (prev != nullptr && prev->val >= root->val) return false;
 
         prev = root;
         return inOrderValid(root->right);

@@ -7,42 +7,32 @@
 TEST_CASE("098", "validateBinarySearchTree")
 {
 
-    // Solution s;
-    // {
-    //     TreeNode root = TreeNode(3);
-    //     TreeNode node_1 = TreeNode(2);
-    //     TreeNode node_2 = TreeNode(3);
-    //     TreeNode node_4 = TreeNode(3);
-    //     TreeNode node_6 = TreeNode(1);
+    Solution s;
+    {
+        TreeNode root = TreeNode(2);
+        TreeNode node_1 = TreeNode(1);
+        TreeNode node_2 = TreeNode(3);
 
-    //     root.left = &node_1;
-    //     root.right = &node_2;
-    //     node_1.right = &node_4;
-    //     node_2.right = &node_6;
+        root.left = &node_1;
+        root.right = &node_2;
 
-    //     REQUIRE( (s.rob1(&root) == 7) );
-    //     REQUIRE( (s.rob2(&root) == 7) );
-    //     REQUIRE( (s.rob(&root)) == 7 );
+        REQUIRE( s.isValidBST(&root) );
 
-    // }
+    }
 
-    // {
-    //     TreeNode root = TreeNode(3);
-    //     TreeNode node_1 = TreeNode(4);
-    //     TreeNode node_2 = TreeNode(5);
-    //     TreeNode node_3 = TreeNode(1);
-    //     TreeNode node_4 = TreeNode(3);
-    //     TreeNode node_6 = TreeNode(1);
+    {
+        TreeNode root = TreeNode(5);
+        TreeNode node_1 = TreeNode(1);
+        TreeNode node_2 = TreeNode(4);
+        TreeNode node_5 = TreeNode(3);
+        TreeNode node_6 = TreeNode(6);
 
-    //     root.left = &node_1;
-    //     root.right = &node_2;
-    //     node_1.left = &node_3;
-    //     node_1.right = &node_4;
-    //     node_2.right = &node_6;
-    //     REQUIRE( (s.rob1(&root) == 9) );
-    //     REQUIRE( (s.rob2(&root) == 9) );
-    //     REQUIRE( (s.rob(&root) == 9) );
+        root.left = &node_1;
+        root.right = &node_2;
+        node_2.left = &node_5;
+        node_2.right = &node_6;
 
-    // }
+        REQUIRE( !s.isValidBST(&root) );
+    }
 
 }

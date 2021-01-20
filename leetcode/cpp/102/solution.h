@@ -60,4 +60,24 @@ public:
     }
 
     // DFS
+    vector<vector<int>> levelOrderII(TreeNode* root) {
+        result.clear();
+        if (root==nullptr) return result;
+        dfs(root, 0);
+        return result;
+    }
+
+    void dfs(TreeNode* node, int level) {
+        if (node==nullptr) return;
+
+        if (result.size() < level + 1) {
+            result.push_back({});
+        }
+        result[level].push_back(node->val);
+        dfs(node->left, level + 1);
+        dfs(node->left, level + 1);
+    }
+
+private:
+    vector<vector<int>> result;
 };

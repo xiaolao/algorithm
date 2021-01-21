@@ -106,8 +106,6 @@ public:
         return {robed, notrobed};
     }
 
-
-
     // 暴力递归-最优子结构
     int rob1(TreeNode* root) {
         if (root == nullptr) return 0;

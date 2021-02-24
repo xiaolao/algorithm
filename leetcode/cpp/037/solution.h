@@ -44,7 +44,7 @@ public:
                 int n = board[i][j] - '1';
                 // 给bitset在有数值的位置进行标记
                 row[i] |= (1 << n);  // 按位或赋值
-                col[i] |= (1 << n);
+                col[j] |= (1 << n);
                 cel[i/3][j/3] |= (1 << n);
             }
         }
@@ -65,6 +65,7 @@ public:
             board[pos[0]][pos[1]] = '.';
             fillNum(pos[0], pos[1], n, false);
         }
+        return false;
     }
 
     // 通过对row,col,cel做位运算，找出能填数字最少的空格位置

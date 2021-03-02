@@ -27,4 +27,71 @@
 // words[i] consists of lowercase English letters.
 // All the strings of words are unique.
 
+
+#include <string>
 #include <vector>
+#include <functional>
+
+using std::string;
+using std::vector;
+using std::function;
+
+
+class TrieNode {
+public:
+    string word;
+    TrieNode* next[26];
+
+    TrieNode() {
+        word = "";
+        memset(next, 0, sizeof(next));
+    }
+};
+
+
+class Solution {
+public:
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        int row = board.size(), col = board[0].size();
+
+        // 构建Trie树
+        TrieNode* root = new TrieNode();
+        for (string word : words) {
+            TrieNode* cur = root;
+            for (char c : word) {
+                if (cur->next[c-'a'] == nullptr) {
+                    cur->next[c-'a'] = new TrieNode();
+                }
+                cur = cur->next[c-'a'];
+            }
+            cur->word = word;
+        }
+
+        vector<string> result;
+
+        function<void(int, int, TrieNode* node)> dfs = [&](int i, int j, TrieNode* node) {
+            char c = board[i][j];  // 
+            if (c == '.' || node->next[c-'a'] == nullptr) return;
+
+            node = node->next[c-'a'];
+            if (node->word != "") {
+                result.push_back(node->word);
+                node->word = "";
+            }
+
+            board[i][j] = '.';
+            if (i>0) dfs(i-1, j, node);
+            if (i<row-1) dfs(i+1, j, node);
+            if (j>0) dfs(i, j-1, node);
+            if (j<col-1) dfs(i, j+1, node);
+            board[i][j] = c;
+        };
+
+        for (int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                dfs(i, j, root);
+            }
+        }
+        return result;
+    }
+};

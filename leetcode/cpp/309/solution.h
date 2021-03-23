@@ -24,12 +24,27 @@
 // 0 <= prices[i] <= 1000
 
 #include <vector>
+#include <algorithm>
 
-
+using std::max;
 using std::vector;
 
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
+        size_t n = prices.size();
+        if (n <= 1) return 0;
+        int buy = -prices[0], sell = 0, cooldown = 0;
+
+        for (size_t i = 0; i < n; i++) {
+            int new_buy = max(buy, sell-prices[i]);
+            int new_sell = max(cooldown, sell);
+            int new_cooldown = buy+prices[i];
+            buy = new_buy;
+            sell = new_sell;
+            cooldown = new_cooldown;
+        }
+
+        return max(sell, cooldown);
     }
 };

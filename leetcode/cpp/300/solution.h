@@ -37,6 +37,7 @@
 using std::max;
 using std::vector;
 using std::max_element;
+using std::lower_bound;
 
 
 class Solution {
@@ -88,5 +89,21 @@ public:
             }
         }
         return len;
+    }
+
+    // 方法二：数组 + 二分法 + CPP语法特性
+    int lengthOfLIS3(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 0) return 0;
+
+        vector<int> lis = {nums[0]};
+        for (size_t i = 1; i < n; ++i) {
+            auto it = lower_bound(lis.begin(), lis.end(), nums[i]);
+            if (it == lis.end())
+                lis.push_back(nums[i]);
+            else
+                *it = nums[i];
+        }
+        return lis.size();
     }
 };

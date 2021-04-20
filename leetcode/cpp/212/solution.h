@@ -27,7 +27,6 @@
 // words[i] consists of lowercase English letters.
 // All the strings of words are unique.
 
-
 #include <string>
 #include <vector>
 #include <functional>
@@ -47,7 +46,6 @@ public:
         memset(next, 0, sizeof(next));
     }
 };
-
 
 class Solution {
 public:
